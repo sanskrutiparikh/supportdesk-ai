@@ -1,0 +1,13 @@
+text,category
+"I was charged twice for my subscription",Billing
+"My payment was successful but my plan is not activated",Billing
+"I want a refund immediately",Refund
+"Cancel my subscription and refund my money",Refund
+"My app crashes when I open it",Technical
+"I'm getting error 500 while logging in",Technical
+"I forgot my password and can't login",Account
+"My account is locked please unlock it",Account
+"My order is delayed and not delivered yet",Delivery
+"I received wrong product in delivery",Delivery
+"How can I change my email address?",General
+"I want to know the pricing details",General
