@@ -1,0 +1,73 @@
+text,category
+"I was charged twice for my subscription",Billing
+"My payment was successful but my plan is not activated",Billing
+"I want a refund immediately",Refund
+"Cancel my subscription and refund my money",Refund
+"My app crashes when I open it",Technical
+"I'm getting error 500 while logging in",Technical
+"I forgot my password and can't login",Account
+"My account is locked please unlock it",Account
+"My order is delayed and not delivered yet",Delivery
+"I received wrong product in delivery",Delivery
+"How can I change my email address?",General
+"I want to know the pricing details",General
+"My card was charged but I did not get any confirmation",Billing
+"I made the payment but subscription is still not active",Billing
+"I was charged even after canceling my plan",Billing
+"Payment deducted but order not placed",Billing
+"I want to update my payment method",Billing
+"My invoice is not generated",Billing
+"I was charged for premium without my permission",Billing
+"Why am I being charged every month?",Billing
+"Money debited but transaction failed",Billing
+"My coupon code is not working during payment",Billing
+"I want to return the product and get refund",Refund
+"Refund is not credited in my bank account",Refund
+"I cancelled my order but refund not received",Refund
+"Please refund my amount as soon as possible",Refund
+"Refund is taking too long",Refund
+"I want full refund for this service",Refund
+"I received damaged product, refund me",Refund
+"Return request accepted but no refund yet",Refund
+"How long does refund take?",Refund
+"Refund my money back now",Refund
+"My application is not opening",Technical
+"The app is stuck on loading screen",Technical
+"I'm facing login error again and again",Technical
+"The website is showing blank page",Technical
+"I am getting server error 500",Technical
+"My screen freezes when I click submit",Technical
+"The app keeps crashing after update",Technical
+"I cannot upload my documents",Technical
+"OTP is not coming and app is not responding",Technical
+"I am seeing unknown error message",Technical
+"I forgot my password and cannot reset it",Account
+"I want to change my registered phone number",Account
+"My account got suspended without reason",Account
+"I am unable to verify my email address",Account
+"I want to delete my account permanently",Account
+"Please help me recover my account",Account
+"I am not able to login into my account",Account
+"My profile details are not updating",Account
+"I want to update my username",Account
+"I am locked out of my account",Account
+"My order is not delivered yet",Delivery
+"Delivery is delayed by 3 days",Delivery
+"Where is my package now?",Delivery
+"I received the wrong item",Delivery
+"My order status is not updating",Delivery
+"Delivery person did not call me",Delivery
+"The package is marked delivered but I did not get it",Delivery
+"My shipment is stuck in transit",Delivery
+"The product is missing in the box",Delivery
+"I want to change delivery address",Delivery
+"How can I upgrade my plan?",General
+"What are your working hours?",General
+"I want to know the subscription price",General
+"How do I contact customer support?",General
+"Is cash on delivery available?",General
+"How to use this app for the first time?",General
+"Can I change my language settings?",General
+"Do you have student discount?",General
+"Where can I see my order history?",General
+"How to apply promo code?",General

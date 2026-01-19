@@ -1,12 +1,18 @@
 import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi import Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
 
 # Load trained model + vectorizer
 model = joblib.load("model/ticket_model.joblib")
 vectorizer = joblib.load("model/tfidf_vectorizer.joblib")
 
 app = FastAPI(title="SupportDesk AI - Ticket Classifier")
+templates = Jinja2Templates(directory="app/templates")
+
 
 # Input format for API
 class TicketRequest(BaseModel):
@@ -41,26 +47,40 @@ def auto_reply(category: str) -> str:
     return replies.get(category, "Thanks for reaching out! Our support team will contact you soon.")
 
 
-@app.get("/")
-def home():
-    return {"message": "SupportDesk AI is running ✅. Open /docs to test the API."}
+@app.get("/", response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.post("/predict")
-def predict_ticket(req: TicketRequest):
-    text = req.text
-
+@app.post("/analyze", response_class=HTMLResponse)
+def analyze_ticket(request: Request, text: str = Form(...)):
     X = vectorizer.transform([text])
     category = model.predict(X)[0]
 
-    confidence = float(model.predict_proba(X).max())
+    proba = model.predict_proba(X)[0]
+    labels = model.classes_
+    confidence = float(proba.max())
+
+    top3_idx = proba.argsort()[-3:][::-1]
+    top_3_predictions = [
+        {"label": labels[i], "prob": round(float(proba[i]), 3)}
+        for i in top3_idx
+    ]
 
     priority = predict_priority(text)
     reply = auto_reply(category)
 
-    return {
+    result = {
+        "text": text,
         "category": category,
         "priority": priority,
         "confidence": round(confidence, 3),
-        "suggested_reply": reply
+        "needs_human_review": confidence < 0.60,
+        "top_3_predictions": top_3_predictions,
+        "suggested_reply": reply,
     }
+
+    return templates.TemplateResponse(
+        "result.html",
+        {"request": request, "result": result},
+    )

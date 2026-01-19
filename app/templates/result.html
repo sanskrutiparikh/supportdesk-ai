@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result - SupportDesk AI</title>
+</head>
+<body style="font-family: Arial; padding: 25px;">
+  <h2>✅ Ticket Analysis Result</h2>
+
+  <p><b>Ticket:</b> {{ result.text }}</p>
+  <hr>
+
+  <p><b>Category:</b> {{ result.category }}</p>
+  <p><b>Priority:</b> {{ result.priority }}</p>
+  <p><b>Confidence:</b> {{ result.confidence }}</p>
+
+  {% if result.needs_human_review %}
+    <p style="color:red;"><b>⚠ Needs Human Review</b></p>
+  {% else %}
+    <p style="color:green;"><b>✅ Auto Approved</b></p>
+  {% endif %}
+
+  <h3>Top 3 Predictions</h3>
+  <ol>
+    {% for item in result.top_3_predictions %}
+      <li>{{ item.label }} - {{ item.prob }}</li>
+    {% endfor %}
+  </ol>
+
+  <h3>Suggested Reply</h3>
+  <div style="border:1px solid #ccc; padding: 12px; width: 750px;">
+    {{ result.suggested_reply }}
+  </div>
+
+  <br>
+  <a href="/">⬅ Analyze Another Ticket</a>
+</body>
+</html>
